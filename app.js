@@ -69,6 +69,11 @@ async function fetchAllRecords(url) {
   return records;
 }
 
+function formatNumber(num) {
+  const n = Number(num) || 0;
+  return n.toLocaleString("en-IN");
+}
+
 function getVal(val) {
   if (Array.isArray(val)) return val[0] !== undefined ? val[0] : "";
   return val !== undefined && val !== null ? val : "";
@@ -139,8 +144,8 @@ function renderTables(llpRecords, bmRecords) {
     html += `
       <tr>
         <td>${devotee}</td>
-        <td>${contacts}</td>
-        <td>${laxmi}</td>
+        <td>${formatNumber(contacts)}</td>
+        <td>${formatNumber(laxmi)}</td>
       </tr>
     `;
   });
@@ -150,8 +155,8 @@ function renderTables(llpRecords, bmRecords) {
         <tfoot>
           <tr class="total-row">
             <td>Total</td>
-            <td>${llpContactsTotal}</td>
-            <td>${llpLaxmiTotal}</td>
+            <td>${formatNumber(llpContactsTotal)}</td>
+            <td>${formatNumber(llpLaxmiTotal)}</td>
           </tr>
         </tfoot>
       </table>
@@ -187,8 +192,8 @@ function renderTables(llpRecords, bmRecords) {
     html += `
       <tr>
         <td>${devotee}</td>
-        <td>${bookPoints}</td>
-        <td>${salesPoints}</td>
+        <td>${formatNumber(bookPoints)}</td>
+        <td>${formatNumber(salesPoints)}</td>
       </tr>
     `;
   });
@@ -198,8 +203,8 @@ function renderTables(llpRecords, bmRecords) {
         <tfoot>
           <tr class="total-row">
             <td>Total</td>
-            <td>${bmBookTotal}</td>
-            <td>${bmSalesTotal}</td>
+            <td>${formatNumber(bmBookTotal)}</td>
+            <td>${formatNumber(bmSalesTotal)}</td>
           </tr>
         </tfoot>
       </table>
